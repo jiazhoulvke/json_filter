@@ -1,4 +1,4 @@
-json_filter支持用sql的方式查询json格式的数据。虽然jq也可以筛选数据，但语法实在太难记，每次学完过一段时间就忘，而sql则是天天在用的，想忘都忘不了，于是就有了这个项目。
+json_filter支持用SQL的方式查询json格式的数据。虽然jq也可以筛选数据，但语法实在太难记，每次学完过一段时间就忘，而SQL则是天天在用的，想忘都忘不了，于是就有了这个项目。
 
 比如文件test.log的内容如下:
 
@@ -25,7 +25,7 @@ cat test.log | json_filter -q "select * from t where level='error' and ts>160225
 
 注意表名固定是t，不能是其他的名字。
 
-如果只需要部分字段，也可以像写sql那样取出指定字段:
+如果只需要部分字段，也可以像写SQL那样取出指定字段:
 
 ``` bash
 cat test.log | json_filter -q "select msg,data.title from t where data is not null"
@@ -52,6 +52,6 @@ cat test.log | json_filter -q "select [keys] from t where level='info'"
 {"[keys]":"data,level,msg,ts"}
 ```
 
-目前支持的sql关键字及运算符如下：
+目前支持的SQL关键字及运算符如下：
 
 `(`、`)`、`+`、`-`、`*`、`/`、`%`、`=`、`>`、`<`、`>=`、`<=`、`<>`、`and`、`or`、`is null`、`is not null`、`like `、`not like`、`in`、`not in`
